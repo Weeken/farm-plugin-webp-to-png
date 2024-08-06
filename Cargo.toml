@@ -1,0 +1,15 @@
+[package]
+edition = "2021"
+name = "farm_plugin_webp_to_png"
+version = "0.0.0"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+farmfe_core = { version = "*" }
+farmfe_toolkit_plugin_types = { version = "*" }
+farmfe_macro_plugin = { version = "*" }
+libwebp = { version = "0.1.2", features = ["0_6"] }
+lodepng = { version = "3.8" }
+imagequant = { version = "4.3.3", default-features = false }

@@ -1,0 +1,44 @@
+{
+  "name": "farm-plugin-webp-to-png",
+  "version": "0.1.0",
+  "main": "scripts/index.js",
+  "types": "scripts/index.d.ts",
+  "type": "module",
+  "license": "MIT",
+  "devDependencies": {
+    "@farmfe/plugin-tools": "latest"
+  },
+  "napi": {
+    "name": "farm_plugin_webp_to_png",
+    "triples": {
+      "additional": [
+        "aarch64-apple-darwin",
+        "aarch64-unknown-linux-gnu",
+        "aarch64-unknown-linux-musl",
+        "x86_64-unknown-linux-musl",
+        "i686-pc-windows-msvc",
+        "aarch64-pc-windows-msvc"
+      ]
+    }
+  },
+  "exports": {
+    ".": {
+      "import": "./scripts/func.js",
+      "types": "./scripts/index.d.ts",
+      "default": "./scripts/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "dev": "cargo watch -w src -s 'scripts/watch.sh'",
+    "bump": "npx changeset version",
+    "play": "pnpm --filter playground build",
+    "preview": "pnpm --filter playground preview",
+    "build": "farm-plugin-tools build --platform --cargo-name farm_plugin_webp_to_png -p farm_plugin_webp_to_png --release",
+    "prepublishOnly": "farm-plugin-tools prepublish"
+  },
+  "files": [
+    "scripts",
+    "options.d.ts"
+  ]
+}
