@@ -17,10 +17,13 @@ pub fn insert_resource(
 pub fn compress_png(data: Vec<imagequant::RGBA>, w: usize, h: usize) -> Vec<u8> {
   let mut liq = imagequant::new();
   liq.set_speed(5).unwrap();
-  liq.set_quality(70, 99).unwrap();
+  liq.set_quality(10, 99).unwrap();
   let mut img = liq.new_image(data, w, h, 0.0).unwrap();
   // The magic happens in quantize()
-  let mut res = liq.quantize(&mut img).unwrap();
+  let mut res = match liq.quantize(&mut img) {
+    Ok(res) => res,
+    Err(err) => panic!("Quantization failed, because: {err:?}"),
+  };
 
   // Enable dithering for subsequent remappings
   res.set_dithering_level(1.0).unwrap();
