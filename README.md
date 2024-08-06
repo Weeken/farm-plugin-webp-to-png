@@ -1,6 +1,8 @@
 ## farm-plugin-webp-to-png
 
-A pwa rust plugin for farm
+A rust plugin for farm to automatically convert your webp to png, and compress all the png.
+
+You don't need to change anything in your code, the plugin can automatically replace all the `.webp` to `.png`.
 
 ### Install
 
