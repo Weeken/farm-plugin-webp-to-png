@@ -38,7 +38,13 @@ pub fn compress_png(data: Vec<imagequant::RGBA>, w: usize, h: usize) -> Vec<u8> 
 }
 
 pub fn convert_webp_to_png(webp: &[u8]) -> Vec<u8> {
-  let (width, height, buf) = WebPDecodeRGBA(webp).unwrap();
+  let decode_result = WebPDecodeRGBA(webp);
+  let result = match decode_result {
+    Ok((w, h, webp_box)) => (w, h, webp_box),
+    Err(error) => panic!("Problem decoding the webp: {error:?}"),
+  };
+
+  let (width, height, buf) = result;
   let png = encode32(&buf, width as usize, height as usize).unwrap();
   let png_rgba = decode32(png).unwrap();
 
