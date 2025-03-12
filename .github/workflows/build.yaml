@@ -69,7 +69,7 @@ jobs:
           #   osxcross: true
           #   zig: true
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Cache rust artifacts
         uses: Swatinem/rust-cache@v2
         with:
@@ -90,7 +90,8 @@ jobs:
       - uses: goto-bus-stop/setup-zig@v2
         if: ${{ matrix.settings.zig }}
         with:
-          version: 0.14.0-dev.1983+6bf52b050
+          version: master
+          cache: true
       - name: Build in docker
         uses: addnab/docker-run-action@v3
         if: ${{ matrix.settings.docker }}
