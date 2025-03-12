@@ -53,11 +53,11 @@ impl Plugin for FarmPluginWebpToPng {
       let mut resource_map_clone = _param.resources_map.clone();
       for (name, resource) in resource_map_clone.iter_mut() {
         if name.ends_with(".webp") {
-          println!("name: {}", name);
+          // println!("name: {}", name);
           // println!("resource: {:?}", resource);
           let png_name = name.replace(".webp", ".png");
 
-          let png_bytes = convert_webp_to_png(&resource.bytes.as_slice());
+          let png_bytes = convert_webp_to_png(&resource.bytes.as_slice(), name.clone());
 
           let png_resource = Resource {
             name: png_name.clone(),
