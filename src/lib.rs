@@ -19,11 +19,11 @@ use crate::utils::{compress_png, compress_webp, convert_webp_to_png, get_png_bit
 #[serde(default)]
 struct PluginOptions {
   is_convert: bool,
-  quality: f32,
+  quality: Option<f32>,
 }
 
 impl PluginOptions {
-  /// 默认 quality 为 80(Default 派生会给出 0.0,这里校正)
+  /// 未传 quality 或超出范围时回退到 80
   const DEFAULT_QUALITY: f32 = 80.0;
 }
 
