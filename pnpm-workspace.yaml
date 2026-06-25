@@ -1,3 +1,5 @@
-packages: 
+packages:
   - '.'
   - playground
+allowBuilds:
+  core-js: true

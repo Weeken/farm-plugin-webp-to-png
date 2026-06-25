@@ -13,3 +13,5 @@ farmfe_macro_plugin = { version = "*" }
 libwebp = { version = "0.1.2", features = ["0_6"] }
 lodepng = { version = "3.8" }
 imagequant = { version = "4.3.3", default-features = false }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

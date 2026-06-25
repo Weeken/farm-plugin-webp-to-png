@@ -1,6 +1,6 @@
 use farmfe_core::resource::Resource;
 use imagequant;
-use libwebp::WebPDecodeRGBA;
+use libwebp::{WebPDecodeRGBA, WebPEncodeRGBA};
 use lodepng::{decode32, encode32, Bitmap, Encoder, RGBA};
 use std::collections::HashMap;
 
@@ -56,4 +56,20 @@ pub fn convert_webp_to_png(webp: &[u8], name: String) -> Vec<u8> {
 pub fn get_png_bitmap(png_data: &[u8]) -> Bitmap<RGBA> {
   let png_rgba = decode32(png_data).unwrap();
   return png_rgba;
+}
+
+/// 压缩 webp(is_convert=false 时使用):解码 webp 为 RGBA,再用 libwebp 有损重新编码为体积更小的 webp。
+/// `quality_factor` 取值 0-100,越低体积越小,推荐 75-85。
+pub fn compress_webp(webp: &[u8], name: String, quality_factor: f32) -> Vec<u8> {
+  let (width, height, buf) = match WebPDecodeRGBA(webp) {
+    Ok((w, h, webp_box)) => (w, h, webp_box),
+    Err(error) => panic!("Problem decoding the webp: {error:?} {name}"),
+  };
+
+  let stride = width * 4;
+  let encoded = match WebPEncodeRGBA(&buf, width, height, stride, quality_factor) {
+    Ok(data) => data,
+    Err(error) => panic!("Problem encoding the webp: {error:?} {name}"),
+  };
+  encoded.to_vec()
 }
