@@ -27,7 +27,7 @@ jobs:
               npm run build -- --target x86_64-unknown-linux-musl --abi linux-x64-musl
           - os: windows-latest
             abi: win32-x64-msvc
-          - os: macos-15
+          - os: macos-14
             abi: darwin-x64
           - os: macos-latest
             abi: darwin-arm64
