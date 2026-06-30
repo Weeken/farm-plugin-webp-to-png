@@ -73,3 +73,4 @@ pub fn compress_webp(webp: &[u8], name: String, quality_factor: f32) -> Vec<u8> 
   };
   encoded.to_vec()
 }
+
