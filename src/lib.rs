@@ -46,14 +46,14 @@ impl Plugin for FarmPluginWebpToPng {
   ) -> farmfe_core::error::Result<Option<farmfe_core::plugin::PluginRenderResourcePotHookResult>>
   {
     let options: Value = serde_json::from_str(&self.plugin_option).unwrap_or_default();
-    println!("options: {:?}", options);
+    // println!("options: {:?}", options);
     let mut is_convert = false;
     if let Some(is_convert_result) = options.get("is_convert") {
       let result = is_convert_result.as_bool().unwrap_or_default();
       is_convert = result;
     }
     if matches!(_context.config.mode, Mode::Production) && is_convert {
-      println!("is_convert: {:?}", is_convert);
+      // println!("is_convert: {:?}", is_convert);
       if _param.content.contains(".webp") {
         return Ok(Some(
           farmfe_core::plugin::PluginRenderResourcePotHookResult {

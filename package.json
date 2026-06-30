@@ -6,6 +6,7 @@
   "type": "module",
   "license": "MIT",
   "devDependencies": {
+    "@changesets/cli": "^2.27.8",
     "@farmfe/plugin-tools": "latest"
   },
   "napi": {
@@ -32,7 +33,8 @@
   },
   "scripts": {
     "dev": "cargo watch -w src -s 'scripts/watch.sh'",
-    "bump": "npx changeset version",
+    "changeset": "changeset",
+    "bump": "changeset version",
     "play": "pnpm --filter playground build",
     "preview": "pnpm --filter playground preview",
     "build": "farm-plugin-tools build --platform --cargo-name farm_plugin_webp_to_png -p farm_plugin_webp_to_png --release",
