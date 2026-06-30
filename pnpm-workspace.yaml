@@ -3,3 +3,6 @@ packages:
   - playground
 allowBuilds:
   core-js: true
+overrides: 
+  browserslist: "latest"
+  caniuse-lite: "latest"

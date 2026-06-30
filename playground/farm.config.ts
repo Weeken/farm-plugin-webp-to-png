@@ -13,6 +13,6 @@ export default defineConfig({
   },
   plugins: [
     react({ runtime: "automatic" }),
-    farmPlugin()
+    farmPlugin({ is_convert: false })
   ],
 });

@@ -20,6 +20,7 @@ export function Main() {
         </a>
         <div className="logo none"></div>
         <div className="logo avatar"></div>
+        <div className="logo bg"></div>
       </div>
       <h1>Farm + React</h1>
       <div className="card">

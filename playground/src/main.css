@@ -32,6 +32,13 @@
   background-size: 100%;
   background-repeat: no-repeat;
 }
+.logo.bg{
+  width: 6em;
+  background-image: url('./assets/1.webp');
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
 
 @keyframes logo-spin {
   from {
