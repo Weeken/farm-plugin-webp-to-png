@@ -18,10 +18,10 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: Setup Node.js 18.x
+      - name: Setup Node.js 20.x
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 20.x
 
       # batch download artifacts
       - uses: actions/download-artifact@v4
@@ -37,7 +37,7 @@ jobs:
           done
 
       - name: Install Dependencies
-        run: npm install -g pnpm@9.1.0 && pnpm i --frozen-lockfile
+        run: npm install -g pnpm && pnpm i --frozen-lockfile
 
       - name: Publish to npm
         run: npm set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }} && npm publish

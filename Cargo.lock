@@ -489,6 +489,8 @@ dependencies = [
  "imagequant",
  "libwebp",
  "lodepng",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]

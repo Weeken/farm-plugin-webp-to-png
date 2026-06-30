@@ -1,6 +1,6 @@
 {
   "name": "farm-plugin-webp-to-png",
-  "version": "0.1.4",
+  "version": "1.0.0",
   "main": "scripts/index.js",
   "types": "scripts/index.d.ts",
   "type": "module",
@@ -13,6 +13,7 @@
     "triples": {
       "additional": [
         "aarch64-apple-darwin",
+        "x86_64-apple-darwin",
         "aarch64-unknown-linux-gnu",
         "aarch64-unknown-linux-musl",
         "x86_64-unknown-linux-musl",
