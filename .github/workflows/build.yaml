@@ -77,7 +77,7 @@ jobs:
           shared-key: rust-build-${{ matrix.settings.abi }}
       - uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 18
       - name: Install Dependencies
         run: npm install -g pnpm && pnpm i --frozen-lockfile
       - run: rustup target add ${{ matrix.settings.target }}
