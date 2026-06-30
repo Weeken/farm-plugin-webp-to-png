@@ -29,6 +29,7 @@ jobs:
             abi: win32-x64-msvc
           - os: macos-14
             abi: darwin-x64
+            target: x86_64-apple-darwin
           - os: macos-latest
             abi: darwin-arm64
 
