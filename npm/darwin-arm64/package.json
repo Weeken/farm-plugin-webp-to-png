@@ -1,6 +1,6 @@
 {
   "name": "farm-plugin-webp-to-png-darwin-arm64",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "os": [
     "darwin"
   ],

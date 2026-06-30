@@ -6,6 +6,7 @@
   "type": "module",
   "license": "MIT",
   "devDependencies": {
+    "@changesets/cli": "^2.27.8",
     "@farmfe/plugin-tools": "latest"
   },
   "napi": {
