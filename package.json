@@ -43,5 +43,8 @@
   "files": [
     "scripts",
     "options.d.ts"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
