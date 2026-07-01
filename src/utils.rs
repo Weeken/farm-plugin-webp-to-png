@@ -1,4 +1,5 @@
 use farmfe_core::resource::Resource;
+use image::codecs::jpeg::JpegEncoder;
 use imagequant;
 use libwebp::{WebPDecodeRGBA, WebPEncodeRGBA};
 use lodepng::{decode32, encode32, Bitmap, Encoder, RGBA};
@@ -72,5 +73,26 @@ pub fn compress_webp(webp: &[u8], name: String, quality_factor: f32) -> Vec<u8> 
     Err(error) => panic!("Problem encoding the webp: {error:?} {name}"),
   };
   encoded.to_vec()
+}
+
+/// 压缩 jpg/jpeg:解码为 RGB,再按指定质量重新编码为 JPEG。
+/// `quality_factor` 取值 0-100,越低体积越小,推荐 75-85。
+pub fn compress_jpeg(jpeg: &[u8], name: String, quality_factor: f32) -> Vec<u8> {
+  let image = match image::load_from_memory(jpeg) {
+    Ok(image) => image,
+    Err(error) => panic!("Problem decoding the jpeg: {error:?} {name}"),
+  };
+
+  let rgb_image = image.to_rgb8();
+  let (width, height) = rgb_image.dimensions();
+  let quality = quality_factor.clamp(1.0, 100.0) as u8;
+  let mut output = Vec::new();
+  let mut encoder = JpegEncoder::new_with_quality(&mut output, quality);
+
+  if let Err(error) = encoder.encode(&rgb_image, width, height, image::ColorType::Rgb8) {
+    panic!("Problem encoding the jpeg: {error:?} {name}");
+  }
+
+  output
 }
 
