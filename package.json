@@ -5,6 +5,10 @@
   "types": "scripts/index.d.ts",
   "type": "module",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Weeken/farm-plugin-webp-to-png"
+  },
   "devDependencies": {
     "@changesets/cli": "^2.27.8",
     "@farmfe/plugin-tools": "latest"
