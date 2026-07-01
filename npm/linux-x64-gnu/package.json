@@ -1,6 +1,10 @@
 {
   "name": "farm-plugin-webp-to-png-linux-x64-gnu",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Weeken/farm-plugin-webp-to-png"
+  },
   "os": [
     "linux"
   ],

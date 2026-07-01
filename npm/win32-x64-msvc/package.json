@@ -1,6 +1,10 @@
 {
   "name": "farm-plugin-webp-to-png-win32-x64-msvc",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Weeken/farm-plugin-webp-to-png"
+  },
   "os": [
     "win32"
   ],
