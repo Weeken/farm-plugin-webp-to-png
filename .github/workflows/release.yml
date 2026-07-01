@@ -40,4 +40,8 @@ jobs:
         run: npm install -g pnpm && pnpm i --frozen-lockfile
 
       - name: Publish to npm
-        run: npm set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }} && npm publish
+        run: npm set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }} && npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          token: ${{ secrets.NPM_TOKEN }}
