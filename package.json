@@ -1,6 +1,6 @@
 {
   "name": "farm-plugin-webp-to-png",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "scripts/index.js",
   "types": "scripts/index.d.ts",
   "type": "module",

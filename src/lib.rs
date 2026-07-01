@@ -11,11 +11,11 @@ use farmfe_macro_plugin::farm_plugin;
 use serde::Deserialize;
 
 mod utils;
-use crate::utils::{compress_png, compress_webp, convert_webp_to_png, get_png_bitmap, insert_resource};
+use crate::utils::{compress_jpeg, compress_png, compress_webp, convert_webp_to_png, get_png_bitmap, insert_resource};
 
 /// 插件配置,从 farm.config.ts 的插件 options 传入(JSON 字符串)
 /// - `is_convert`:是否将 webp 转换为 png。默认 false,表示只压缩已有的 png;true 时才会把 webp 转换为 png
-/// - `quality`:webp 有损重编码质量 0-100,is_convert=false 时生效。默认 80
+/// - `quality`:webp/jpg/jpeg 有损重编码质量 0-100。默认 80
 #[derive(Deserialize, Debug)]
 #[farm_plugin]
 pub struct FarmPluginWebpToPng {
@@ -130,6 +130,19 @@ impl Plugin for FarmPluginWebpToPng {
           };
           _param.resources_map.remove(name);
           insert_resource(_param.resources_map, name.clone(), png_resource);
+        }
+        if name.ends_with(".jpg") || name.ends_with(".jpeg") {
+          let jpeg_bytes = compress_jpeg(resource.bytes.as_slice(), name.clone(), quality as f32);
+          let jpeg_resource = Resource {
+            name: name.clone(),
+            bytes: jpeg_bytes,
+            emitted: false,
+            resource_type: resource.resource_type.clone(),
+            origin: resource.origin.clone(),
+            info: None,
+          };
+          _param.resources_map.remove(name);
+          insert_resource(_param.resources_map, name.clone(), jpeg_resource);
         }
       }
     }
